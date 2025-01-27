@@ -1,17 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import ToDo from './ToDo';
+import { useState } from 'react';
+
+const todos = [
+  {
+    title: "Learn React",
+    date: new Date(2025, 1, 27),
+    checked:true
+    
+  },
+  {
+    title: "TP 1 React",
+    date: new Date(2025, 1, 27),
+    checked:false
+
+  },
+  {
+    title: "TP 2 React",
+    date: new Date(2025, 1, 27),
+    checked:false
+
+  },
+      {
+    title: "TP 3 React",
+    date: new Date(2026, 1, 27),
+    checked:false
+  },
+];
 
 function App() {
   const DATE = new Date();
+
+
 
   return (
     <>
       <article className="ToDoList">
         <h1>TODO List</h1>
         <h2>{DATE.toLocaleString()}</h2>
-        <ToDo/>
+        
+        {todos.map((todo, index) => (
+        <ToDo
+          key={index}
+          title={todo.title}
+          date={todo.date}
+          checked={todo.checked}
+          />
+      ))}    
       </article>
     
     
@@ -22,21 +57,75 @@ function App() {
 }
 
 
-function ToDo() {
-
-  return (
-    <>
-      <ul>
-        <li>Faire le TP Todo List</li> 
-        <li>Faire le TP Card User</li>
-        <li>Une fois qu'un TP est terminé, le push sur un dépôt Github</li>
-        <li>Pour chaque TP, m'envoyer le lien du dépôt Github par MP</li>
-      </ul>
-    </>
-
-  )
-
-
-}
-
 export default App
+
+
+// import './App.css'
+// import ToDo from './ToDo';
+// import { useState } from 'react';
+
+// const [todos,setTodos] = useState( [
+//   {
+//     title: "Learn React",
+//     date: new Date(2025, 1, 27),
+//     checked:true
+    
+//   },
+//   {
+//     title: "TP 1 React",
+//     date: new Date(2025, 1, 27),
+//     checked:false
+
+//   },
+//   {
+//     title: "TP 2 React",
+//     date: new Date(2025, 1, 27),
+//     checked:false
+
+//   },
+//       {
+//     title: "TP 3 React",
+//     date: new Date(2026, 1, 27),
+//     checked:false
+//   },
+// ]);
+
+// function App() {
+//   const DATE = new Date();
+
+
+
+//   return (
+//     <>
+//       <article className="ToDoList">
+//         <h1>TODO List</h1>
+//         <h2>{DATE.toLocaleString()}</h2>
+        
+//         {todos.map((todo, index) => (
+//         <ToDo
+//           key={index}
+//           title={todo.title}
+//           date={todo.date}
+//           checked={todo.checked}
+//           onChange={() => handleCheckboxChange(index)} 
+//           />
+//       ))}    
+//       </article>
+    
+    
+//     </>
+
+
+//   )
+// }
+
+// const handleCheckboxChange = (index: number) => {
+//   setTodos((prevTodos) =>
+//     prevTodos.map((todo, i) =>
+//       i === index ? { ...todo, checked: !todo.checked } : todo
+//     )
+//   );
+// };
+
+
+// export default App
